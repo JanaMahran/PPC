@@ -14,7 +14,7 @@ class Vehicle:
         return f"/n{'Priority' if self.priority else 'Normal'} Vehicle {self.vehicle_id} from {self.source} to {self.destination}"
 
 directions = ["North", "South", "West", "East"]
-#Pour les message queues s
+#Pour les message queues, on mets des clés pour y accéder
 sections = {
     "North": 1111,
     "South": 2222,
@@ -92,6 +92,9 @@ def coordinator():
         time.sleep(0.5)
 
 if __name__ == "__main__":
+    # Global flag to stop the simulation
+    running = True
+    
     # Create queues for each road section
     queues = create_queues()
 
@@ -105,20 +108,19 @@ if __name__ == "__main__":
     priority_process.start()
     coordinator_process.start()
 
-    # Run for a fixed duration
-    time.sleep(15)
+    # Run the program for a specific amount of time
+    try:
+        time.sleep(30)
+    finally:
+        running = False
+        normal_process.join()
+        priority_process.join()
+        coordinator_process.join()
+        
+        # Remove message queues (libération des ressources à la fin)
+        for queue in queues.values():
+            queue.remove()
+            
+        print("Simulation stopped.")
 
-    # Terminate processes
-    normal_process.terminate()
-    priority_process.terminate()
-    coordinator_process.terminate()
 
-    normal_process.join()
-    priority_process.join()
-    coordinator_process.join()
-
-    # Remove message queues
-    for queue in queues.values():
-        queue.remove()
-
-    print("Simulation stopped.")
