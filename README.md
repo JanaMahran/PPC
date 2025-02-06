@@ -1,7 +1,5 @@
 ## **At the Crossroads**
 
-Project Title is a description of the project and its purpose.
-
 ## **Introduction**
 
 Simulateur d'un Carrefour en Python dans le cadre de notre projet Programmation Parallele et Concurrente
