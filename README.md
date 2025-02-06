@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-Simulateur d'un Carrefour en Python dans le cadre de notre projet Programmation Parallele et Concurrente
+Simulateur d'un Carrefour en Python dans le cadre de notre projet Programmation Parallele et Concurrente de MAHRAN Jana et Bleuenn EVEN
 ## **Pré-requis**
 1. Système d'éxploitation: Linux
 2. Dépendances: **sysv_ipc**
